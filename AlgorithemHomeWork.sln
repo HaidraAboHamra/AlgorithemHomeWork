@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35208.52
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgorithemHomeWork", "AlgorithemHomeWork\AlgorithemHomeWork.csproj", "{A0C3BAA2-EEA0-4DB9-BD2E-9380CA5DC8DC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A0C3BAA2-EEA0-4DB9-BD2E-9380CA5DC8DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0C3BAA2-EEA0-4DB9-BD2E-9380CA5DC8DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0C3BAA2-EEA0-4DB9-BD2E-9380CA5DC8DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0C3BAA2-EEA0-4DB9-BD2E-9380CA5DC8DC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1820B402-9CF2-4D72-8C7C-2CABFD033856}
+	EndGlobalSection
+EndGlobal
