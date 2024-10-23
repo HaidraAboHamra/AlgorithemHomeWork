@@ -1,50 +1,66 @@
 ﻿using System;
+using System.Collections.Generic;
 
+
+
+namespace AlgorithemHomeWork;
 class Program
 {
     static void Main(string[] args)
     {
-        int[] frequency = new int[76]; // مصفوفة لتخزين التكرارات (0-75)
+        Iterative counter = new Iterative();
+        Recursive counter1 = new Recursive();
 
-        Console.WriteLine("أدخل الأعداد بين 25 و75 (اكتب 'exit' للخروج):");
 
         while (true)
         {
-            string input = Console.ReadLine();
+            Console.WriteLine("Choose execution method (type 'exit' to quit):");
+            Console.WriteLine("1. Iterative method");
+            Console.WriteLine("2. Recursive method");
 
-            // تحقق مما إذا أراد المستخدم الخروج
-            if (input.ToLower() == "exit")
+            string choice = Console.ReadLine();
+
+            if (choice.ToLower() == "exit")
             {
                 break;
             }
 
-            // محاولة تحويل المدخل إلى عدد صحيح
-            if (int.TryParse(input, out int number))
+            if (choice != "1" && choice != "2")
             {
-                // التحقق من النطاق
-                if (number >= 25 && number <= 75)
-                {
-                    frequency[number]++;
-                    Console.WriteLine($"تم تسجيل الرقم {number} بنجاح.");
-                }
-                else
-                {
-                    Console.WriteLine($"خطأ: الرقم {number} خارج النطاق المسموح به (25-75).");
-                }
+                Console.WriteLine("Invalid choice. Please enter 1 or 2.");
+                continue;
+            }
+
+            Console.WriteLine("Enter numbers separated by spaces:");
+            string input = Console.ReadLine();
+            string[] inputArr = input.Split(' ');
+
+            int[] arr;
+            try
+            {
+                arr = Array.ConvertAll(inputArr, int.Parse);
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("An error occurred in number input. Please ensure you enter valid integers.");
+                continue;
+            }
+
+            Dictionary<int, int> result;
+
+            if (choice == "1")
+            {
+                result = counter.CountFrequencyIterative(arr);
             }
             else
             {
-                Console.WriteLine("خطأ: يُرجى إدخال عدد صحيح أو 'exit' للخروج.");
+                result = counter1.CountFrequencyRecursive(arr);
             }
-        }
 
-        // طباعة النتائج
-        Console.WriteLine("\nعدد مرات تكرار كل قيمة:");
-        for (int i = 25; i <= 75; i++)
-        {
-            if (frequency[i] > 0)
+            Console.WriteLine("Value frequencies:");
+            foreach (var pair in result)
             {
-                Console.WriteLine($"الرقم {i} تكرر {frequency[i]} مرات.");
+                Console.WriteLine($"{pair.Key}: {pair.Value}");
             }
         }
     }

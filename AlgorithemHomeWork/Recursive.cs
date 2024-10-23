@@ -6,58 +6,38 @@ using System.Threading.Tasks;
 
 namespace AlgorithemHomeWork
 {
-    class Program
+    public class Recursive
     {
-        static void Main(string[] args)
+        public Dictionary<int, int> CountFrequencyRecursive(int[] arr, Dictionary<int, int> frequency = null, int index = 0)
         {
-            //مصفوفة للاعداد
-            int[] frequency = new int[76];
-
-            Console.WriteLine("أدخل الأعداد بين 25 و75 (اكتب 'exit' للخروج):");
-            CalculateFrequency(frequency);
-
-            // طباعة النتائج
-            Console.WriteLine("\nعدد مرات تكرار كل قيمة:");
-            for (int i = 25; i <= 75; i++)
+            if (frequency == null)
             {
-                if (frequency[i] > 0)
-                {
-                    Console.WriteLine($"الرقم {i} تكرر {frequency[i]} مرات.");
-                }
-            }
-        }
-
-        static void CalculateFrequency(int[] frequency)
-        {
-            string input = Console.ReadLine();
-
-            // تحقق مما إذا أراد المستخدم الخروج
-            if (input.ToLower() == "exit")
-            {
-                return; // إنهاء الدالة
+                frequency = new Dictionary<int, int>();
             }
 
-            // محاولة تحويل المدخل إلى عدد صحيح
-            if (int.TryParse(input, out int number))
+            if (index >= arr.Length)
             {
-                // التحقق من النطاق
-                if (number >= 25 && number <= 75)
+                return frequency;
+            }
+
+            int num = arr[index];
+            if (num >= 25 && num <= 75)
+            {
+                if (frequency.ContainsKey(num))
                 {
-                    frequency[number]++;
-                    Console.WriteLine($"تم تسجيل الرقم {number} بنجاح.");
+                    frequency[num]++;
                 }
                 else
                 {
-                    Console.WriteLine($"خطأ: الرقم {number} خارج النطاق المسموح به (25-75).");
+                    frequency[num] = 1;
                 }
             }
             else
             {
-                Console.WriteLine("خطأ: يُرجى إدخال عدد صحيح أو 'exit' للخروج.");
+                Console.WriteLine($"Value {num} is out of range (25-75) and will be ignored.");
             }
 
-            // الاستدعاء العودي للمتابعة
-            CalculateFrequency(frequency);
+            return CountFrequencyRecursive(arr, frequency, index + 1);
         }
     }
 }
